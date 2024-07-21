@@ -1,4 +1,4 @@
-#!/usr/bin/env pwsh
+#!/bin/bash
 
 #输入变量
 
