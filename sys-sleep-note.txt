@@ -1,0 +1,9 @@
+user/user.h 定义了用户空间中的各种函数
+user中的各个函数可以通过调用kernel中的系统调用来实现
+kernel/sysproc.c中实现了各种系统调用
+kernel/proc.c中实现了内核空间的sleep函数
+内核进程和用户进程是两个进程，两份代码
+用户空间中的sleep需要调用内核空间中的sys_sleep系统调用
+内核空间中的myproc()函数
+kernel/syscall.c中syscall函数 实现各种系统调用，通过进程信息结构指针proc-p传入系统调用号
+syscall.c文件中proc结构定义
