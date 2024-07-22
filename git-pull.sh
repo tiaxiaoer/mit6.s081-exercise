@@ -7,6 +7,7 @@ REMOTE_REPOSITORY_SITE="https://github.com/tiaxiaoer/mit6.s081-exercise.git"
 REMOTE_REPOSITORY_NAME="origin"
 BRANCH=$1
 
+git stash
 echo "git pull: "
 git pull $REMOTE_REPOSITORY_NAME $BRANCH:$BRANCH
-
+git stash pop
