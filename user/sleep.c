@@ -3,12 +3,13 @@
 #include "kernel/types.h"
 #include "kernel/stat.h"
 #include "user/user.h"
-
+/*
 int sleep(int n){
     for(int i=0; i<n; i++){
         sys_sleep();
     }
 }
+*/
 
 int main(int argc, char *argv[]){
     if(argc <= 1){
