@@ -104,6 +104,7 @@ extern uint64 sys_close(void);
 
 // An array mapping syscall numbers from syscall.h
 // to the function that handles the system call.
+//将系统调用号映射为系统系统调用函数的指针
 static uint64 (*syscalls[])(void) = {
 [SYS_fork]    sys_fork,
 [SYS_exit]    sys_exit,
@@ -130,7 +131,9 @@ static uint64 (*syscalls[])(void) = {
 
 void
 syscall(void)
+/*实现各种系统调用，通过进程信息结构指针proc-p传入系统调用号*/
 {
+  
   int num;
   struct proc *p = myproc();
 

@@ -51,6 +51,7 @@ sys_sbrk(void)
 uint64
 sys_sleep(void)
 {
+//调用proc.c中的sleep函数
   int n;
   uint ticks0;
 

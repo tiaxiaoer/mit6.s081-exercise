@@ -8,8 +8,8 @@
 #>
 param(
     [string]$b,
-    [string]$f,
-    [string]$m
+    [string]$f = ".",
+    [string]$m = "a change commit"
 )
 
 #定义变量

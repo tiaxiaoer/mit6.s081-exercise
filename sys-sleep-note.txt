@@ -1,9 +1,26 @@
-user/user.h 定义了用户空间中的各种函数
+user/user.h 定义了用户空间中的各种函数 以及系统调用
 user中的各个函数可以通过调用kernel中的系统调用来实现
+kernel/syscall.h函数定义了各系统调用的调用号
 kernel/sysproc.c中实现了各种系统调用
 kernel/proc.c中实现了内核空间的sleep函数
 内核进程和用户进程是两个进程，两份代码
 用户空间中的sleep需要调用内核空间中的sys_sleep系统调用
-内核空间中的myproc()函数
+内核空间中kernel/proc.c中的myproc()函数
 kernel/syscall.c中syscall函数 实现各种系统调用，通过进程信息结构指针proc-p传入系统调用号
 syscall.c文件中proc结构定义
+kernel/proc.h中定义的
+    context：上下文结构
+    proc结构
+    cpu结构
+    trapframe
+
+user/usys.pl 用于自动生成usys.S文件，其中包含了ecall指令
+    ecall指令将cpu执行环境从用户态转换成核心态
+    接着cpu从a7寄存器中读取出系统调用号调用核心空间相应函数
+
+在用户空间中可以直接使用fork exit wait sleep等函数，因为他们直接在
+用户空间中嵌入了汇编代码，汇编代码会将系统调用号直接写入a7寄存器中
+
+系统调用是在核心态执行的
+
+cpu有三种模式 machine mode, supervisor mode, and user mode
