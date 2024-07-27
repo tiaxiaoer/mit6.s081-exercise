@@ -15,7 +15,7 @@ int main(int argc, char *argv[]){
     char str[100];
     if(pid==0){ //子进程 
         read(pidfd[0], str, sizeof(str));
-        pid_t temp_pid=get_pid();
+        pid_t temp_pid=getpid();
         fprintf(str, "<%u>: received ping", (unsigned int)temp_pid);
         write(pidfd[1], str, strlen(str)+1);
         close(pidfd[1]);
@@ -24,7 +24,7 @@ int main(int argc, char *argv[]){
         write(pidfd[1], "hello!", strlen("hello!")+1 );
         close(pidfd[1]);
         read(pidfd[0], str, sizeof(str));
-        printf("<%u>:: received pong", (unsigned int)get_pid());
+        printf("<%u>:: received pong", (unsigned int)getpid());
     }
     exit(0);
 }
