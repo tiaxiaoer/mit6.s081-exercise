@@ -15,9 +15,12 @@ int main(int argc, char *argv[]){
     char str[100];
     if(pid==0){ //子进程 
         read(pidfd[0], str, sizeof(str));
+        /*
         pid_t temp_pid=getpid();
         fprintf(str, "<%u>: received ping", (unsigned int)temp_pid);
         write(pidfd[1], str, strlen(str)+1);
+        */
+        fprintf((int)pidfd[1], "<%u>: received ping", (unsigned int)getpid());
         close(pidfd[1]);
     }else{      //父进程
         close(pidfd[0]);
