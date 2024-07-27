@@ -21,6 +21,7 @@ int main(int argc, char *argv[]){
         write(pidfd[1], str, strlen(str)+1);
         */
         fprintf((int)pidfd[1], "<%u>: received ping", (unsigned int)getpid());
+        printf("<%u>:: received ping", (unsigned int)getpid());
         close(pidfd[1]);
     }else{      //父进程
         close(pidfd[0]);
